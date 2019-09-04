@@ -87,7 +87,6 @@ if (Program.buildPages) {
       process.exit(-1);
     });
 }
-
 // Convert scss to css
 if (Program.compileCss) {
   compileCSS.compile(options, Program.args[0]);
@@ -101,4 +100,5 @@ if (Program.compileJs) {
 // Compress/transpile the javascript files
 if (Program.watch) {
   watch.run();
+  watch.runScss();
 }

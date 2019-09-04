@@ -28,7 +28,7 @@ module.exports.compile = (options, path) => {
 
       if (path) {
         const stats = Fs.lstatSync(`${RootPath}/${path}`);
-
+        console.log("state: ", stats)
         if (stats.isDirectory()) {
           folders.push(`${RootPath}/${path}`);
         } else if (stats.isFile()) {

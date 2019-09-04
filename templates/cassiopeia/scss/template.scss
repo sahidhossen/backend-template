@@ -1,7 +1,6 @@
 // Bootstrap functions
 @import "../../../media/vendor/bootstrap/scss/functions";
 
-
 // Variables
 @import "variables";
 
@@ -65,4 +64,126 @@
 .chzn-container-multi {
   width: 100% !important;
   max-width: 240px;
+}
+
+
+
+// Global Color
+:root{
+    --background: #f4f7fc;
+    --inverse-background: #1d2427;
+    --color: #252732;
+    --color-rgb: 37, 39, 50;
+    --inverse-color: #ffffff;
+    --secondary-color: #5e727c;
+    --icon-color: #808f94;
+    --secondary-icon-color: #bdc5c8;
+    --button-background: #e5f2ff;
+    --cancel-button-background: #f0f3f8;
+    --disabled-button-background: #eaeaea;
+    --link-color: #0184ff;
+    --link-color-light-rgb: 229, 242, 255;
+    --primary-color: #0184ff;
+    --primary-gradient-color: #198df8;
+    --success-color: #7ac143;
+    --warning-color: #f9a541;
+    --danger-color: #f44321;
+    --overlay: rgba(23, 23, 23, 0.5);
+}
+
+//Buttons Style
+.btn{
+  padding: 0 2.857rem;
+  line-height: 3.429rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  color: var(--color);
+  background-color: rgba(var(--color-rgb), 0.1);
+  box-shadow: 0 1px 1px 0 rgba(var(--color-rgb), 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+  transition: .3s;
+  span.icon{
+    font-size: 1.143rem;
+    z-index: -1;
+    display: inline-block;
+    width: 3.43rem;
+    height: 100%;
+    margin: 0 1rem 0 -2.857rem;
+    line-height: 3.429rem;
+    border-right: 1px solid rgba(var(--color-rgb), 0.07);
+  }
+  &:hover, &:focus, &:focus:active, &:active{
+    box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+  }
+  &.btn-primary{
+    border-radius: 3px;
+    background-image: linear-gradient(to bottom, rgba(249, 252, 255, 0.5), rgba(var(--link-color-light-rgb), 0.5)), linear-gradient(to bottom, var(--button-background), var(--button-background));
+    background-color: transparent;
+    letter-spacing: 0.3px;
+    color: var(--link-color);
+    font-weight: 500;
+    &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
+      background-image: none;
+      background-color: var(--link-color);
+      color: #fff;
+      span.icon{
+        border-right-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+    &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
+      box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
+    }
+    &[disabled], &.disabled, &:disabled{
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+      background-color: var(--disabled-button-background);
+      pointer-events: none;
+      background-image: none;
+      color: var(--secondary-icon-color);
+    }
+    span.icon{
+      border-right: 1px solid rgba(1, 132, 255, 0.1);
+    }
+  }
+  &.btn-secondary{
+    background-color: transparent;
+    border: 1px solid var(--secondary-icon-color);
+    color: var(--secondary-color);
+    box-shadow: none;
+    span.icon{
+      border-right-width: 0px;
+      margin: 0 .3rem 0 -2.5rem;
+    }
+    &:hover, &:not(:disabled):active{
+      background-color: transparent;
+      border-color: var(--link-color);
+      color: var(--link-color);
+      box-shadow: 0 1px 1px 0 rgba(37, 39, 50, 0.15);
+    }
+    &:focus, &:not(:disabled):active:focus{
+      background-color: transparent;
+      border-color: var(--secondary-icon-color);
+      box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
+    }
+    &[disabled], &.disabled, &:disabled{
+      box-shadow: none;
+      background-color: transparent;
+      pointer-events: none;
+      color: var(--secondary-icon-color);
+      border-color: var(--secondary-icon-color);
+    }
+  }
+  &.btn-ghost{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--color);
+    &:hover{
+      color: var(--link-color);
+      box-shadow: none;
+    }
+    &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
+      color: var(--link-color);
+      box-shadow: 0 1px 1px 0 rgba(var(--color-rgb), 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+    }
+  }
 }
