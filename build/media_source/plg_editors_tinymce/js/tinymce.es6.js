@@ -19,7 +19,7 @@
       const pluginOptions = Joomla.getOptions ? Joomla.getOptions('plg_editor_tinymce', {})
         : (Joomla.optionsStorage.plg_editor_tinymce || {});
       const editors = [].slice.call(container.querySelectorAll('.js-editor-tinymce'));
-
+      console.log("plugin: ",pluginOptions)
       editors.forEach((editor) => {
         const currentEditor = editor.querySelector('textarea');
         Joomla.JoomlaTinyMCE.setupEditor(currentEditor, pluginOptions);
@@ -91,26 +91,46 @@
         buttonValues.push(tmp);
       });
 
+      const toggleButtonValues = (editor, _) => {
+        const parentNode = editor.editorContainer.parentNode
+        if( parentNode !== null ){
+          if( parentNode.classList.contains('joomla-tinymce-hide-menu')){
+            parentNode.classList.remove('joomla-tinymce-hide-menu')
+          }else{
+            parentNode.classList.add('joomla-tinymce-hide-menu')
+          }
+        }
+      }
+
       if (buttonValues.length) {
         options.setup = (editor) => {
+          
           Object.keys(icons).forEach((icon) => {
             editor.ui.registry.addIcon(icon, icons[icon]);
           });
-
+          
           editor.ui.registry.addSplitButton('jxtdbuttons', {
             type: 'menubutton',
             text: Joomla.JText._('PLG_TINY_CORE_BUTTONS'),
             icon: 'joomla',
             fetch: callback => callback(buttonValues),
           });
+
+          editor.ui.registry.addButton('jstogglebutton', {
+            text: 'Toggle',
+            tooltip: 'Toggle Menubar',
+            onAction: toggleButtonValues.bind(this, editor)
+          });
+
         };
+
+        
       }
 
       // Create a new instance
       // eslint-disable-next-line no-undef
       const ed = new tinyMCE.Editor(element.id, options, tinymce.EditorManager);
       ed.render();
-
       /** Register the editor's instance to Joomla Object */
       Joomla.editors.instances[element.id] = {
         // Required by Joomla's API for the XTD-Buttons

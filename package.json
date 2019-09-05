@@ -14,6 +14,7 @@
   "scripts": {
     "build:js": "node build.js --compile-js",
     "build:css": "node build.js --compile-css",
+    "build:css:watch": "node build.js --compile-css --watch",
     "watch": "node build.js --watch",
     "lint:js": "npx eslint .",
     "test": "npx karma start tests/javascript/karma.conf.js --single-run",
@@ -61,7 +62,7 @@
     "babel-plugin-add-header-comment": "^1.0.3",
     "babel-preset-minify": "^0.4.3",
     "babelify": "^10.0.0",
-    "commander": "^2.20.0",
+    "commander": "^3.0.1",
     "copy-dir": "^0.4.0",
     "cssnano": "^4.1.10",
     "eslint": "^5.15.3",
