@@ -19,7 +19,6 @@
       const pluginOptions = Joomla.getOptions ? Joomla.getOptions('plg_editor_tinymce', {})
         : (Joomla.optionsStorage.plg_editor_tinymce || {});
       const editors = [].slice.call(container.querySelectorAll('.js-editor-tinymce'));
-      console.log("plugin: ",pluginOptions)
       editors.forEach((editor) => {
         const currentEditor = editor.querySelector('textarea');
         Joomla.JoomlaTinyMCE.setupEditor(currentEditor, pluginOptions);
@@ -108,7 +107,7 @@
           Object.keys(icons).forEach((icon) => {
             editor.ui.registry.addIcon(icon, icons[icon]);
           });
-          
+
           editor.ui.registry.addSplitButton('jxtdbuttons', {
             type: 'menubutton',
             text: Joomla.JText._('PLG_TINY_CORE_BUTTONS'),
@@ -123,7 +122,6 @@
           });
 
         };
-
         
       }
 
