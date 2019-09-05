@@ -19,6 +19,7 @@
       "dependencies": ["template.atum.base"],
       "css": [
         "template.min.css",
+        "_mamun.css",
         "user.css"
       ]
     },

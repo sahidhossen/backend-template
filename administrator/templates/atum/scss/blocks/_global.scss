@@ -67,7 +67,9 @@ textarea {
 
 label,
 caption {
-  font-size: $label-font-size;
+  color: var(--secondary-color);
+  font-size: .75rem;
+  margin-bottom: .3rem;
 }
 
 .logo {
