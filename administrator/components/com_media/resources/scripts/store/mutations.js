@@ -134,6 +134,17 @@ export default {
     },
 
     /**
+     * Add last uploaded file for progress bar
+     * @param state
+     * @param payload
+     */
+    [types.SET_LAST_UPLOADED_FILES]: (state, payload) => {
+        const file = payload
+        console.log("push: ", file)
+        state.lastUploadedFile.push(file)
+    },
+
+    /**
      * The upload success mutation
      * @param state
      * @param payload
@@ -141,7 +152,7 @@ export default {
     [types.UPLOAD_SUCCESS]: (state, payload) => {
         const file = payload;
         const isNew = (!state.files.some(existing => (existing.path === file.path)));
-
+        
         // TODO handle file_exists
         if (isNew) {
             const parentDirectory = state.directories.find((existing) => (existing.path === file.directory));
@@ -155,6 +166,12 @@ export default {
                 files: [...parentDirectory.files, file.path]
             }));
         }
+        // Delete from last uploaded file
+        console.log("conteinue-1", state.lastUploadedFile)
+        state.lastUploadedFile.splice(state.lastUploadedFile.findIndex(
+            _file => _file.name === file.name
+        ), 1);
+        console.log("conteinue-2", state.lastUploadedFile)
     },
 
     /**
@@ -412,4 +429,20 @@ export default {
     [types.HIDE_CONFIRM_DELETE_MODAL]: (state) => {
         state.showConfirmDeleteModal = false;
     },
+
+    /**
+     * Show the upload media modal
+     * @param state
+     */
+    [types.SHOW_UPLOAD_MEDIA_MODAL]: (state) => {
+        state.showUploadMediaModal = true;
+    },
+
+    /**
+     * Hide the create folder modal
+     * @param state
+     */
+    [types.HIDE_UPLOAD_MEDIA_MODAL]: (state) => {
+        state.showUploadMediaModal = false;
+    }
 }

@@ -60,7 +60,6 @@
                 // Add the global resize event listener
                 window.addEventListener('resize', this.setFullHeight)
             });
-
             // Initial load the data
             this.$store.dispatch('getContents', this.$store.state.selectedDirectory);
         },

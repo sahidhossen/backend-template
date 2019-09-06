@@ -51,7 +51,6 @@ class Api {
             if (content) {
 	            url += '&content=' + content;
             }
-
             Joomla.request({
                 url: url,
                 method: 'GET',
