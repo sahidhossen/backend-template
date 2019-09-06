@@ -10,7 +10,7 @@
   background-color: var(--input-background-color);
   color: var(--icon-color);
   display: block;
-  height: 2.5rem;
+  height: 2.86rem;
   min-width: 100%;
 }
 
@@ -117,7 +117,14 @@ legend {
 }
 
 .valid {
-  border-color: theme-color("success");
+  border-color: var(--primary-color);
+}
+input,
+textarea,
+select{
+  &.valid {
+    border-color: var(--primary-color);
+  }
 }
 
 .form-control-feedback {
@@ -172,7 +179,7 @@ legend {
 
 //Form elements custom design
 textarea.form-control {
-  height: 96px;
+  height: 6.9rem;
   padding-top: var(--font-size-sm);
 }
 .custom-select {
@@ -184,5 +191,15 @@ input {
   &.invalid{
     border: 1px solid var(--danger-color);
     background: #fdece8;
+  }
+}
+
+.custom-select {
+  &.custom-select-color-state {
+
+    &.custom-select-success {
+      color: var(--icon-color);
+      border-color: var(--primary-color);
+    }
   }
 }

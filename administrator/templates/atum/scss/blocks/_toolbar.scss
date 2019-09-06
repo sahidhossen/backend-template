@@ -331,39 +331,74 @@ joomla-toolbar-button {
 }
 
 .input-group {
-	position: relative;
+  position: relative;
+  display: block;
 	.input-group-append {
 	  position: absolute;
 	  right: 1.1rem;
 	  top: 0;
 	  height: 1.5rem;
 	  bottom: 0;
-	  margin: auto;
+    margin: auto;
+    z-index: 4;
 	  .btn{
-		background: transparent;
-		border: 0;
-		padding: 0;
-		color: var(--secondary-icon-color);
-	  }
-	}
+      background: var(--transparent-bg);
+      border: 0;
+      padding: 0;
+      color: var(--icon-color);
+      box-shadow: none;
+      line-height: 1;
+      &.btn-secondary{
+        &:active,
+        &:hover,
+        &:focus{
+          box-shadow: none;
+          outline: none;
+          border-color: transparent;
+        }
+        &:not(:disabled){
+          &:active,
+          &:hover,
+          &:focus{
+            box-shadow: none;
+            outline: none;
+            border-color: transparent;
+          }
+        }
+      }
+      &.hidden{
+        display: none;
+      }
+      span{
+        margin-right: 0;
+      }
+    }
+    .input-group-text{
+      background: var(--transparent-bg);
+      color: var(--icon-color)
+    }
+  }
 }
   
 .btn-toolbar{
 	
 	.input-group-append {
-	  height: auto;
-	  top: .55rem;
+    height: 1.5rem;
+    top: 0;
+    line-height: 1;
 	  .btn-primary {
-		background: transparent;
-		color: var(--secondary-icon-color);
+      background: var(--transparent-bg);
+      color: var(--secondary-icon-color);
+      box-shadow: none;
+      line-height: 1;
 	  }
 	}
 	> joomla-toolbar-button,
 	> .btn-group {
 	  @include media-breakpoint-down(lg) {
-		margin-left:0 !important;
-		margin-right:0.75rem;
-		margin-bottom:0.75rem;
+      margin-left:0 !important;
+      margin-right:0.75rem;
+      margin-bottom:0.75rem;
 	  }    
 	}
 	
@@ -374,7 +409,7 @@ joomla-toolbar-button {
     justify-content:flex-start;
     .js-stools-container-bar{
         .btn-toolbar{
-             justify-content:flex-start;
+          justify-content:flex-start;
         }
     }
   }
@@ -413,4 +448,11 @@ joomla-toolbar-button {
         }
      }
   }
+}
+.js-calendar{
+	.calendar-container{
+		.btn{
+			padding: 0 1.75rem;
+		}
+	}
 }
